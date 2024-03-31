@@ -38,7 +38,7 @@ class BHBit(QWidget):
         if(self.m_clicked_updatable):
             self.setval(val)
         else:
-            self.m_btn.setChecked(False)
+            self.setval(self.m_val)
         self.val_updated.emit(self.m_bit_pos)
 
     def set_clicked_updatable(self, enable:bool):

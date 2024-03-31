@@ -1,10 +1,12 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel
+from PyQt5.QtGui import QKeyEvent, QMouseEvent, QPalette, QColor
 from bh_utils import *
 from bh_nibble import BHNibble
 
+
 class BHGrid(QWidget):
-    val_updated = pyqtSignal(int)
+    val_updated = pyqtSignal()
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.m_layout = QGridLayout()
@@ -22,6 +24,8 @@ class BHGrid(QWidget):
                 self.m_nibbles.append(nibble)
                 self.m_layout.addWidget(nibble, 3-i, 3-j)
 
+        self.m_select_mode = False
+        self.m_select_cnt = 0
         self.m_enabled_start_pos = 0
         self.m_enabled_end_pos = 64
         self.set_enabled()
@@ -77,7 +81,27 @@ class BHGrid(QWidget):
     def set_clicked_updatable(self, updatable: bool):
         for bit in self.m_bits:
             bit.set_clicked_updatable(updatable)
+        self.m_select_mode = not updatable
+        self.m_select_cnt = 0
+
+    def clr_enabled_range(self):
+        self.m_select_cnt = 0
+        self.set_enabled()
+        self.val_updated.emit()
 
     def __val_update_slot(self, pos):
         print(pos, self.bitval(pos))
-        self.val_updated.emit(pos)
+        if(self.m_select_mode):
+            if(self.m_select_cnt == 0):
+                self.m_select_cnt = 1
+                self.set_enabled(pos, 63)
+            else:
+                start_pos = self.enabled_start_pos()
+                self.set_enabled(start_pos, pos)
+                self.m_select_cnt = 0
+        self.val_updated.emit()
+
+    def mousePressEvent(self, a0: QMouseEvent) -> None:
+        if(a0.button() == Qt.MouseButton.RightButton):
+            self.clr_enabled_range()
+        return super().mousePressEvent(a0)

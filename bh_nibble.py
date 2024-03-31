@@ -13,7 +13,7 @@ class BHNibble(QWidget):
         self.m_layout.setSpacing(0)
         self.setLayout(self.m_layout)
 
-        self.m_width = 80
+        self.m_width = 90
         self.m_height = 60
         self.setFixedSize(self.m_width, self.m_height)
 

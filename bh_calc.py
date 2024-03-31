@@ -5,7 +5,7 @@ from PyQt5.QtCore import pyqtSignal
 
 
 class BHCalc(QWidget):
-    val_changed = pyqtSignal(int)
+    val_changed = pyqtSignal()
     def __init__(self, parent=None):
         super().__init__(parent)
         self.m_layout = QHBoxLayout()
@@ -21,7 +21,7 @@ class BHCalc(QWidget):
     def calc(self):
         formula_str = self.m_line_edit.text()
         self.m_val = eval(formula_str)
-        self.val_changed.emit(int(self.m_val))
+        self.val_changed.emit()
 
     def setval(self, val:int):
         self.m_val = val

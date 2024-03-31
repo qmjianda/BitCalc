@@ -15,6 +15,9 @@ class Displabel(QWidget):
         self.m_disp = QLabel()
         self.m_layout.addWidget(self.m_disp, stretch=1)
         self.m_disp.setWordWrap(True)
+        self.m_head.setObjectName("DisplabelHeader")
+        self.m_disp.setObjectName("DisplabelValue")
+        self.setFixedHeight(45)
 
     
     def settext(self, text:str):
