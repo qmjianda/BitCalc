@@ -1,28 +1,28 @@
 QWidget {
     background-color: #ffffff;
-    color:#2c3e50
+    color:#000000
 }
 
-QPushButton:hover{
+QPushButton#BHBit {
+  border: 0;
+  border-radius: 10%;
+  font-size: 8;
+}
+
+QPushButton#BHBit:hover{
   background-color: #74b9ff;
 }
 
-QPushButton:disabled{
-  color:#ced6e0;
+QPushButton#BHBit:disabled{
+  color:#b1b3b6;
+  background-color: #ffffff;
 }
 
-QPushButton:checked{
-  background-color: #3498db;
+QLabel#BHBit[light_color='enable'] {
+  color: #3498db;
 }
 
-
-QPushButton {
-    border: 0;
-    border-radius: 10%;
-    font-size: 8;
-}
-
-QLabel#DisplabelHeader {
+QLabel#BHDispHeader {
   color: #2f3542;
   font-size: 14px;
 }

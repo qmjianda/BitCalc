@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QPushButton, QWidget, QHBoxLayout, QLabel, QLineEdit, QTextEdit
 from PyQt5.QtCore import pyqtSignal
-
+from bh_utils import logger
 
 class BHCalc(QWidget):
     val_changed = pyqtSignal()
@@ -20,8 +20,11 @@ class BHCalc(QWidget):
         
     def calc(self):
         formula_str = self.m_line_edit.text()
-        self.m_val = eval(formula_str)
-        self.val_changed.emit()
+        try:
+            self.m_val = eval(formula_str)
+            self.val_changed.emit()
+        except Exception as e:
+            logger.error(str(e))
 
     def setval(self, val:int):
         self.m_val = val

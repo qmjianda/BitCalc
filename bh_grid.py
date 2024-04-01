@@ -90,7 +90,6 @@ class BHGrid(QWidget):
         self.val_updated.emit()
 
     def __val_update_slot(self, pos):
-        print(pos, self.bitval(pos))
         if(self.m_select_mode):
             if(self.m_select_cnt == 0):
                 self.m_select_cnt = 1

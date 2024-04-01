@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout,QGraphicsDropShadowEffect
 from bh_disp import BHDisp
 from bh_grid import BHGrid
 from bh_calc import BHCalc
+from bh_header import BHHeader
 
 class BHWindow(QWidget):
     def __init__(self, parent=None) -> None:
@@ -12,6 +13,10 @@ class BHWindow(QWidget):
         self.m_layout = QVBoxLayout()
         self.m_layout.setContentsMargins(0,0,0,0)
         self.setLayout(self.m_layout)
+
+        self.m_header = BHHeader()
+        self.m_layout.addWidget(self.m_header, alignment=Qt.AlignTop)
+        self.m_header.setHidden(True)
 
         self.m_disp = BHDisp()
         self.m_layout.addWidget(self.m_disp)
@@ -24,9 +29,6 @@ class BHWindow(QWidget):
         self.m_grid.val_updated.connect(self.grid_upval_slot)
         self.m_layout.addWidget(self.m_grid)
 
-        palette = self.palette()
-        palette.setColor(QPalette.Background, QColor(255,255, 255))
-        self.setPalette(palette)
         # self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint
         #                    | Qt.WindowMaximizeButtonHint)
 

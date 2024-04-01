@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QEvent, Qt, pyqtSignal
 from PyQt5.QtGui import QKeyEvent, QMouseEvent, QResizeEvent, QPalette, QColor
-from PyQt5.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel,QApplication
 from bh_utils import *
 
 class BHBit(QWidget):
@@ -12,8 +12,6 @@ class BHBit(QWidget):
         self.m_btn_width = 20
         self.m_btn_height = 20
         self.m_label_hidden = True
-        self.m_label_highlight_color = QColor("#3498db")
-        self.m_label_default_color = Qt.black
 
         self.m_layout = QVBoxLayout()
         self.m_layout.setContentsMargins(0,0,0,0)
@@ -23,16 +21,20 @@ class BHBit(QWidget):
         self.m_btn = QPushButton()
         self.m_btn.setFixedSize(self.m_btn_width, self.m_btn_height)
         self.m_btn.setCheckable(True)
+        self.m_btn.setObjectName("BHBit")
         self.m_btn.clicked.connect(self.__btn_clicked_slot)
         self.m_layout.addWidget(self.m_btn, 0, Qt.AlignmentFlag.AlignCenter)
 
         self.m_label = QLabel(str(self.m_bit_pos))
         self.m_label.setHidden(self.m_label_hidden)
+        self.m_label.setProperty("light_color", "disable")
+        self.m_label.setObjectName("BHBit")
         self.m_layout.addWidget(self.m_label, 0, Qt.AlignmentFlag.AlignCenter)
 
         self.m_clicked_updatable = True
 
         self.setval(0)
+        self.setObjectName("BHBit")
 
     def __btn_clicked_slot(self, val:bool):
         if(self.m_clicked_updatable):
@@ -68,14 +70,12 @@ class BHBit(QWidget):
         return self.m_val
     
     def enterEvent(self, a0: QEvent) -> None:
-        palette = self.m_label.palette()
-        palette.setColor(QPalette.Foreground, self.m_label_highlight_color)
-        self.m_label.setPalette(palette)
+        self.m_label.setProperty("light_color", "enable")
+        self.m_label.setStyle(QApplication.style())
         self.m_label.setHidden(False)
     
     def leaveEvent(self, a0: QEvent) -> None:
-        palette = self.m_label.palette()
-        palette.setColor(QPalette.Foreground, self.m_label_default_color)
-        self.m_label.setPalette(palette)
+        self.m_label.setProperty("light_color", "disable")
+        self.m_label.setStyle(QApplication.style())
         self.m_label.setHidden(self.m_label_hidden)
     

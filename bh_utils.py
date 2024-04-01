@@ -1,3 +1,4 @@
+import logging
 
 def split_string_by_length(string, length) -> str:
     return [string[i:i+length] for i in range(0, len(string), length)]
@@ -14,3 +15,11 @@ def repeat_insert_str(src:str, mark:str, step:int, padding="") -> str:
 def styleS_sheet_loder(path: str) -> str:
      with open(path) as fd:
           return fd.read()
+
+
+logger = logging.getLogger(__name__)
+__logger_handler = logging.StreamHandler()
+__formatter = logging.Formatter('%(levelname)s: %(message)s')
+__logger_handler.setFormatter(__formatter)
+logger.addHandler(__logger_handler)
+logger.setLevel(logging.DEBUG)
