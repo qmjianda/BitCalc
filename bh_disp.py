@@ -41,6 +41,7 @@ class BHDisp(QWidget):
         self.m_layout.addWidget(self.m_dec_label)
         self.m_layout.addWidget(self.m_oct_label)
         self.m_layout.addWidget(self.m_bin_label)
+        self.setval(0)
 
     def setval(self, val:int):
         self.m_hex_label.settext(repeat_insert_str(hex(val)[2:].upper(), " ", 4))

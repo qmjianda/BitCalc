@@ -21,14 +21,14 @@ class BHBit(QWidget):
         self.m_btn = QPushButton()
         self.m_btn.setFixedSize(self.m_btn_width, self.m_btn_height)
         self.m_btn.setCheckable(True)
-        self.m_btn.setObjectName("BHBit")
+        self.m_btn.setObjectName("BHBit_btn")
         self.m_btn.clicked.connect(self.__btn_clicked_slot)
         self.m_layout.addWidget(self.m_btn, 0, Qt.AlignmentFlag.AlignCenter)
 
         self.m_label = QLabel(str(self.m_bit_pos))
         self.m_label.setHidden(self.m_label_hidden)
         self.m_label.setProperty("light_color", "disable")
-        self.m_label.setObjectName("BHBit")
+        self.m_label.setObjectName("BHBit_label")
         self.m_layout.addWidget(self.m_label, 0, Qt.AlignmentFlag.AlignCenter)
 
         self.m_clicked_updatable = True

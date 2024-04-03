@@ -3,26 +3,76 @@ QWidget {
     color:#000000
 }
 
-QPushButton#BHBit {
+QWidget{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+QPushButton#BHBit_btn {
   border: 0;
   border-radius: 10%;
   font-size: 8;
 }
 
-QPushButton#BHBit:hover{
+QPushButton#BHBit_btn:hover{
   background-color: #74b9ff;
 }
 
-QPushButton#BHBit:disabled{
+QPushButton#BHBit_btn:checked{
+  background-color: #74b9ff;
+}
+
+
+QPushButton#BHBit_btn:disabled{
   color:#b1b3b6;
   background-color: #ffffff;
 }
 
-QLabel#BHBit[light_color='enable'] {
+QLabel#BHBit_label[light_color='enable'] {
   color: #3498db;
 }
 
 QLabel#BHDispHeader {
   color: #2f3542;
   font-size: 14px;
+}
+
+#BHHeader,#BHHeader_title,#BHHeader_minimize_btn,#BHHeader_close_btn{
+  max-height:  30px;
+  min-height:  30px;
+}
+
+#BHHeader_top_btn:hover,#BHHeader_minimize_btn:hover,#BHHeader_close_btn:hover{
+  background-color: #ecf0f1;
+}
+
+#BHHeader_close_btn{
+  max-width:  30px;
+  min-width:  30px;
+  background-color: #ffffff;
+  border-image: url(image/close.png);
+}
+
+#BHHeader_minimize_btn{
+  max-width:  30px;
+  min-width:  30px;
+  background-color: #ffffff;
+  border-image: url(image/minimize.png);
+}
+
+#BHHeader_top_btn{
+  max-width:  20px;
+  min-width:  20px;
+  max-height: 20px;
+  min-height: 20px;
+  background-color: #ffffff;
+  border-image: url(image/top.png);
+  border-radius: 10%;
+}
+
+#BHHeader_title{
+  max-width:  30px;
+  min-width:  30px;
+  max-height: 30px;
+  min-height: 30px;
+  image: url(image/counter.png);
 }

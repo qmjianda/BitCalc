@@ -13,13 +13,15 @@ class BHCalc(QWidget):
         self.m_val = 0
         self.m_label = QLabel("=")
         self.m_line_edit = QLineEdit()
-        self.m_line_edit.setPlaceholderText("Enter the formula and press Enter")
+        self.m_line_edit.setPlaceholderText("Input formula")
         self.m_layout.addWidget(self.m_label)
         self.m_layout.addWidget(self.m_line_edit)
         self.m_line_edit.editingFinished.connect(self.calc)
         
     def calc(self):
         formula_str = self.m_line_edit.text()
+        if(formula_str == ""):
+            formula_str = "0"
         try:
             self.m_val = eval(formula_str)
             self.val_changed.emit()

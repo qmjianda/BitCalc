@@ -1,6 +1,6 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QKeyEvent, QMouseEvent, QPalette, QColor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout,QGraphicsDropShadowEffect
+from PyQt5.QtCore import Qt,QRectF
+from PyQt5.QtGui import QKeyEvent, QMouseEvent, QPaintEvent, QPalette, QColor,QPainter,QPainterPath,QRegion,QFont
+from PyQt5.QtWidgets import QWidget, QVBoxLayout,QGraphicsDropShadowEffect,QStyleOption
 from bh_disp import BHDisp
 from bh_grid import BHGrid
 from bh_calc import BHCalc
@@ -11,12 +11,11 @@ class BHWindow(QWidget):
         super().__init__(parent)
         self.setFixedSize(400, 500)
         self.m_layout = QVBoxLayout()
-        self.m_layout.setContentsMargins(0,0,0,0)
+        self.m_layout.setContentsMargins(10,10,10,10)
         self.setLayout(self.m_layout)
 
-        self.m_header = BHHeader()
-        self.m_layout.addWidget(self.m_header, alignment=Qt.AlignTop)
-        self.m_header.setHidden(True)
+        # self.m_header = BHHeader(self)
+        # self.m_layout.addWidget(self.m_header, alignment=Qt.AlignTop)
 
         self.m_disp = BHDisp()
         self.m_layout.addWidget(self.m_disp)
@@ -31,6 +30,8 @@ class BHWindow(QWidget):
 
         # self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint
         #                    | Qt.WindowMaximizeButtonHint)
+        
+        self.setObjectName("BHWindow")
 
         
     def calc_upval_slot(self):
@@ -54,3 +55,5 @@ class BHWindow(QWidget):
         if(a0.key() == Qt.Key.Key_Shift):
             self.m_grid.set_clicked_updatable(True)
         
+
+
