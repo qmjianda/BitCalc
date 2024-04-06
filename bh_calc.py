@@ -1,6 +1,4 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QPushButton, QWidget, QHBoxLayout, QLabel, QLineEdit, QTextEdit
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QLineEdit
 from PyQt5.QtCore import pyqtSignal
 from bh_utils import logger
 

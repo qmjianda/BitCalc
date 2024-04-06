@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel
-from PyQt5.QtGui import QKeyEvent, QMouseEvent, QPalette, QColor
+from PyQt5.QtWidgets import QWidget, QGridLayout
+from PyQt5.QtGui import QMouseEvent
 from bh_utils import *
 from bh_nibble import BHNibble
 

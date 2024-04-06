@@ -1,6 +1,5 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QResizeEvent
-from PyQt5.QtWidgets import QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QHBoxLayout
 from bh_bit import BHBit
 
 class BHNibble(QWidget):

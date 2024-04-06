@@ -1,10 +1,9 @@
-from PyQt5.QtCore import Qt,QRectF
-from PyQt5.QtGui import QKeyEvent, QMouseEvent, QPaintEvent, QPalette, QColor,QPainter,QPainterPath,QRegion,QFont
-from PyQt5.QtWidgets import QWidget, QVBoxLayout,QGraphicsDropShadowEffect,QStyleOption
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QKeyEvent
+from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from bh_disp import BHDisp
 from bh_grid import BHGrid
 from bh_calc import BHCalc
-from bh_header import BHHeader
 
 class BHWindow(QWidget):
     def __init__(self, parent=None) -> None:

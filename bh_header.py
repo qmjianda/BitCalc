@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QEvent, Qt, pyqtSignal, QPoint
-from PyQt5.QtGui import QKeyEvent, QMouseEvent, QResizeEvent, QPalette, QColor
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QMouseEvent
 from PyQt5.QtWidgets import QPushButton, QWidget, QHBoxLayout, QLabel,QApplication,QSpacerItem,QSizePolicy
 from bh_utils import *
 

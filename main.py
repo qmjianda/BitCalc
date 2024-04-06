@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QStyle
-from PyQt5.QtGui import QKeyEvent, QMouseEvent, QResizeEvent, QPalette, QColor, QIcon
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtGui import QIcon
 from bh_window import BHWindow
 from bh_utils import *
 
