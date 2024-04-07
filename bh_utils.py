@@ -12,7 +12,7 @@ def repeat_insert_str(src:str, mark:str, step:int, padding="") -> str:
         res_str_list = split_string_by_length(res_str, step)
         return mark.join(res_str_list)
 
-def styleS_sheet_loder(path: str) -> str:
+def style_sheet_loder(path: str) -> str:
      with open(path) as fd:
           return fd.read()
 

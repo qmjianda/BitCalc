@@ -1,11 +1,10 @@
 QWidget {
     background-color: #ffffff;
-    color:#000000
+    color:#000000;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:larger;
 }
 
-QWidget{
-  font-family:Arial, Helvetica, sans-serif;
-}
 
 QPushButton#BHBit_btn {
   border: 0;
@@ -74,5 +73,4 @@ QLabel#BHDispHeader {
   min-width:  30px;
   max-height: 30px;
   min-height: 30px;
-  image: url(image/counter.png);
 }

@@ -2,6 +2,15 @@ from PyQt5.QtCore import QEvent, Qt, pyqtSignal
 from PyQt5.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel,QApplication
 from bh_utils import *
 
+class BHBtn(QPushButton):
+    enter = pyqtSignal(bool)
+
+    def enterEvent(self, a0: QEvent) -> None:
+        self.enter.emit(True)
+    
+    def leaveEvent(self, a0: QEvent) -> None:
+        self.enter.emit(False)
+
 class BHBit(QWidget):
     val_updated = pyqtSignal(int)
     def __init__(self, parent=None):
@@ -17,17 +26,19 @@ class BHBit(QWidget):
         self.m_layout.setSpacing(0)
         self.setLayout(self.m_layout)
 
-        self.m_btn = QPushButton()
-        self.m_btn.setFixedSize(self.m_btn_width, self.m_btn_height)
-        self.m_btn.setCheckable(True)
-        self.m_btn.setObjectName("BHBit_btn")
-        self.m_btn.clicked.connect(self.__btn_clicked_slot)
-        self.m_layout.addWidget(self.m_btn, 0, Qt.AlignmentFlag.AlignCenter)
-
         self.m_label = QLabel(str(self.m_bit_pos))
         self.m_label.setHidden(self.m_label_hidden)
         self.m_label.setProperty("light_color", "disable")
         self.m_label.setObjectName("BHBit_label")
+
+        self.m_btn = BHBtn()
+        self.m_btn.setFixedSize(self.m_btn_width, self.m_btn_height)
+        self.m_btn.setCheckable(True)
+        self.m_btn.setObjectName("BHBit_btn")
+        self.m_btn.clicked.connect(self.__btn_clicked_slot)
+        self.m_btn.enter.connect(self.__enter_slot)
+
+        self.m_layout.addWidget(self.m_btn, 0, Qt.AlignmentFlag.AlignCenter)
         self.m_layout.addWidget(self.m_label, 0, Qt.AlignmentFlag.AlignCenter)
 
         self.m_clicked_updatable = True
@@ -68,13 +79,12 @@ class BHBit(QWidget):
     def val(self):
         return self.m_val
     
-    def enterEvent(self, a0: QEvent) -> None:
-        self.m_label.setProperty("light_color", "enable")
-        self.m_label.setStyle(QApplication.style())
-        self.m_label.setHidden(False)
-    
-    def leaveEvent(self, a0: QEvent) -> None:
-        self.m_label.setProperty("light_color", "disable")
-        self.m_label.setStyle(QApplication.style())
-        self.m_label.setHidden(self.m_label_hidden)
-    
+    def __enter_slot(self, is_enter:bool) -> None:
+        if(is_enter):
+            self.m_label.setProperty("light_color", "enable")
+            self.m_label.setStyle(QApplication.style())
+            self.m_label.setHidden(False)
+        else:
+            self.m_label.setProperty("light_color", "disable")
+            self.m_label.setStyle(QApplication.style())
+            self.m_label.setHidden(self.m_label_hidden)
