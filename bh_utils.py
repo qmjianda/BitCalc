@@ -1,4 +1,5 @@
 import logging
+import os
 
 def split_string_by_length(string, length) -> str:
     return [string[i:i+length] for i in range(0, len(string), length)]
@@ -23,3 +24,4 @@ __formatter = logging.Formatter('%(levelname)s: %(message)s')
 __logger_handler.setFormatter(__formatter)
 logger.addHandler(__logger_handler)
 logger.setLevel(logging.DEBUG)
+self_path = os.path.split(os.path.realpath(__file__))[0]
