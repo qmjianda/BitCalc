@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QHBoxLayout
+from PyQt5.QtCore import Qt
 from bh_utils import *
 
 class Displabel(QWidget):
@@ -12,6 +13,7 @@ class Displabel(QWidget):
         self.m_head = QLabel(self.m_name)
         self.m_layout.addWidget(self.m_head, stretch=0)
         self.m_disp = QLabel()
+        self.m_disp.setTextInteractionFlags(Qt.TextSelectableByMouse)
         self.m_layout.addWidget(self.m_disp, stretch=1)
         self.m_disp.setWordWrap(True)
         self.m_head.setObjectName("BHDispHeader")
