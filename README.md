@@ -1,4 +1,4 @@
-# bit_helper
+# BitCalc
 
 #### 介绍
 BitCalc可代替windows程序员计算器，支持以下功能
